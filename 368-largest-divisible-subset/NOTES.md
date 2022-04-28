@@ -1,8 +1,10 @@
-​Algorithm - Dynamic Programming
-Type - Longest Increasing Subsequence Type
+​<h1>Algorithm - Dynamic Programming</h1>
+<h2>Type - Longest Increasing Subsequence Type</h2>
 
-Recursive Code:
 
+<h3>Recursive Code:</h3>
+
+```
 class Solution {
 public:
     vector<int> ans;
@@ -29,6 +31,6 @@ public:
         return ans;
     }
 };
-
+```
   
   
