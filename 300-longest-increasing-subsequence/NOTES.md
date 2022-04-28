@@ -1,6 +1,6 @@
-​#Standard Dynamic Programming Question
+​Standard Dynamic Programming Question
 
-#Recursive Code:
+Recursive Code:
 
 class Solution {
 public:
@@ -24,7 +24,7 @@ public:
   
   
   
-#Memoized Code: 
+Memoized Code: 
   
 class Solution {
 public:
@@ -53,7 +53,7 @@ public:
     }
 };
   
-#Memoized Code + Space Optimized
+Memoized Code + Space Optimized
   
 class Solution {
 public:
