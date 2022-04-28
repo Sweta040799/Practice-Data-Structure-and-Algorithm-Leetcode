@@ -1,8 +1,10 @@
-Algorithm: Dynamic Programming
-Type: Longest Increasing Subsequence Type
+<h1>Algorithm: Dynamic Programming</h1>
+<h2>Type: Longest Increasing Subsequence Type</h2>
 
-Recursive Code:
 
+<h3>Recursive Code:</h3>
+
+```
 class Solution {
 public:
     int Recur(vector<vector<int>>& envelopes, int prev, int curr){
@@ -23,9 +25,11 @@ public:
         return Recur(envelopes, -1, 0);
     }
 };
+```
   
-Memoized Code + Space Optimized:
-  
+<h3>Memoized Code + Space Optimized:</h3>
+
+```
 class Solution {
 public:
     int dp[100001];
@@ -54,9 +58,11 @@ public:
         return Recur(envelopes, -1, 0);
     }
 };
+```
   
-#Tabulation Code:
-  
+<h3>Tabulation Code + Space Optimized:</h3>
+
+```
 class Solution {
 public:
     int maxEnvelopes(vector<vector<int>>& envelopes) {
@@ -75,3 +81,4 @@ public:
         return ans;
     }
 };
+```
