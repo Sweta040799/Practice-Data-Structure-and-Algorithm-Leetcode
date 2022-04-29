@@ -8,11 +8,11 @@ PART 1 -
 3. if [0,3] can be swapped and [0,4] can be swapped then we can say that there is an edge which join [2,4] that is why they can also be swapped.
 4. So for above point 3 we can use either DFS/BFS or Disjoint Union Set
 
+```
 e.g,
 Input: s = "dcab", pairs = [[0,3],[1,2],[0,2]]
 Output: "abcd"
 
-```
 0------------3
 |
 |
@@ -20,8 +20,8 @@ Output: "abcd"
 |
 2------------1
 
-```
 This is the required graph obtained 
+```
 
 <h3> How to use DSU </h3>
 
