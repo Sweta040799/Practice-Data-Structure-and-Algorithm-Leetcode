@@ -12,12 +12,15 @@ e.g,
 Input: s = "dcab", pairs = [[0,3],[1,2],[0,2]]
 Output: "abcd"
 
+```
 0------------3
 |
 |
 |
 |
 2------------1
+
+```
 This is the required graph obtained 
 
 <h3> How to use DSU </h3>
