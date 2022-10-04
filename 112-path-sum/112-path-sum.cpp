@@ -11,33 +11,19 @@
  */
 class Solution {
 public:
-    bool k=false;
-    bool hasPathSum(TreeNode* root, int sum) {
-        if(!root){
-            return k;
-        }
-        int s=0;
-        bool f;
-        f=dfs(root,sum,s);
-        return f;
+    bool preorder(TreeNode* root, int sum, int targetSum) {
+        if(root == NULL) return false;
+        if(root->left == NULL && root->right == NULL) {
+            sum += root->val;
+            if(sum == targetSum) return true;
+            return false;
+        }    
+        bool l = preorder(root->left,sum + root->val, targetSum);
+        bool r = preorder(root->right,sum + root->val, targetSum);
+        return (l || r);
+        
     }
-    bool dfs(TreeNode* node, int sum, int s){
-          s+=node->val;
-        if(node->left==NULL && node->right==NULL){
-            // cout<<s<<endl;
-            if(sum==s)
-                k= true;
-            else 
-                s=0;
-        }
-        
-        if(node->left!=NULL)
-            dfs(node->left,sum,s);
-        if(node->right!=NULL)
-             dfs(node->right,sum,s);
-        if(k==true)
-            return k ;
-        return false;
-        
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        return preorder(root,0,targetSum);
     }
 };
