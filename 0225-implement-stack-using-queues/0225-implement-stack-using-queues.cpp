@@ -3,24 +3,46 @@ public:
     MyStack() {
         
     }
-    vector<int> v;
+    queue<int> q;
+    queue<int> temp;
     
     void push(int x) {
-      v.push_back(x);  
+      q.push(x);  
     }
     
     int pop() {
-        int temp = v[v.size() - 1];
-        v.pop_back();
-       return temp; 
+        while(q.size() > 1){
+            temp.push(q.front());
+            q.pop();
+        }
+        int res = q.front();
+        q.pop();
+        
+        while(!temp.empty()){
+            q.push(temp.front());
+            temp.pop();
+        }
+        return res;
     }
     
     int top() {
-        return v[v.size() - 1];
+        while(q.size() > 1){
+            temp.push(q.front());
+            q.pop();
+        }
+        int res = q.front();
+        temp.push(q.front());
+        q.pop();
+        
+        while(!temp.empty()){
+            q.push(temp.front());
+            temp.pop();
+        }
+        return res;
     }
     
     bool empty() {
-        return v.size() == 0;
+        return q.size() == 0;
     }
 };
 
