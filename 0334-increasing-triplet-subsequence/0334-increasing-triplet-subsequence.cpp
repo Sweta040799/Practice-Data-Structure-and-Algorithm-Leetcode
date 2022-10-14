@@ -1,60 +1,33 @@
 class Solution {
 public:
     bool increasingTriplet(vector<int>& nums) {
-        vector<int> greaterRight(nums.size(),0);
-        vector<int> smallerLeft(nums.size(),0);
-        stack<int> s;
+        int n = nums.size();
+        vector<int> ng(n), ps(n);
         
-        for(int i = nums.size()-1;i>=0;i--){
-            if(s.size() == 0){
-                greaterRight[i] = -169;
+        stack<int> st;
+        for(int i = 0; i < n; i++){
+            while(!st.empty() && nums[i] <= nums[st.top()]){
+                st.pop();
             }
-            else if(s.size()>0 and s.top() > nums[i]){
-                greaterRight[i] = s.top();
-            }
-            else if(s.size()>0 and s.top() <= nums[i]){
-                while(s.size() > 0 and s.top() <= nums[i]){
-                    s.pop();
-                }
-                if(s.size() == 0){
-                    greaterRight[i] = -169;
-                }
-                else{
-                    greaterRight[i] = s.top();
-                }
-            }
-            s.push(nums[i]);
+            
+            ps[i] = (st.empty()) ? -169 : nums[st.top()];
+            st.push(i);
         }
         
-        while(!s.empty()){
-            s.pop();
+        while(!st.empty()){
+            st.pop();
+        }
+        for(int i = n - 1; i >= 0; i--){
+            while(!st.empty() && nums[i] >= nums[st.top()])
+                st.pop();
+            
+            ng[i] = (st.empty()) ? -169 : nums[st.top()];
+            st.push(i);
         }
         
-        for(int i = 0;i<nums.size();i++){
-            if(s.size() == 0){
-                smallerLeft[i] = -169;
-            }
-            else if(s.size()>0 and s.top() < nums[i]){
-                smallerLeft[i] = s.top();
-            }
-            else if(s.size()>0 and s.top() >= nums[i]){
-                while(s.size() > 0 and s.top() >= nums[i]){
-                    s.pop();
-                }
-                if(s.size() == 0){
-                    smallerLeft[i] = -169;
-                }
-                else{
-                    smallerLeft[i] = s.top();
-                }
-            }
-            s.push(nums[i]);
-        }
-       
-        for(int i = 0; i < nums.size();i++){
-            if(greaterRight[i]!=-169 and smallerLeft[i]!=-169){
+        for(int i = 0; i < n; i++){
+            if(ps[i] != -169 && ng[i] != -169)
                 return true;
-            }
         }
         
         return false;
